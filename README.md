@@ -40,7 +40,7 @@ cd your-repository
 ```bash
 uv sync
 ```
-####Production
+#### Production
 ```bash
 uv sync --no-dev
 ```
@@ -49,3 +49,19 @@ uv sync --no-dev
 ```bash
 jupyter lab
 ```
+## 🚧 Status
+
+Current phase:
+
+- [x] Project initialization
+- [x] Dataset selected
+- [ ] Exploratory Data Analysis
+- [ ] Data preprocessing
+- [ ] Model training
+- [ ] Model comparison
+- [ ] FastAPI
+- [ ] PostgreSQL
+- [ ] Docker
+- [ ] CI/CD
+- [ ] Deployment
+
