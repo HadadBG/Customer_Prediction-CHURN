@@ -1,5 +1,5 @@
 [project]
-name = "prediccion-clientes-churn"
+name = "Customer_Prediction"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
