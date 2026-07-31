@@ -8,7 +8,7 @@ Before running this project, make sure you have the following installed:
 - Git
 - uv (Python package manager)
 
-### Install uv
+### 1.-Install uv
 
 #### Windows (PowerShell)
 
@@ -28,14 +28,14 @@ Verify the installation:
 uv --version
 ```
 
-### Clone the repository
+### 2.-Clone the repository
 
 ```bash
 git clone https://github.com/your-username/your-repository.git
 cd your-repository
 ```
 
-### Install dependencies
+### 3.-Install dependencies
 #### Development
 ```bash
 uv sync
@@ -43,6 +43,25 @@ uv sync
 #### Production
 ```bash
 uv sync --no-dev
+```
+### 4.-Activate the virtual environment
+
+#### Windows (PowerShell)
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+#### Windows (Command Prompt)
+
+```cmd
+.venv\Scripts\activate.bat
+```
+
+#### Linux / macOS
+
+```bash
+source .venv/bin/activate
 ```
 ### Run Notebooks
 
