@@ -8,7 +8,7 @@ Before running this project, make sure you have the following installed:
 - Git
 - uv (Python package manager)
 
-### 1.-Install uv
+### 1. Install uv
 
 #### Windows (PowerShell)
 
@@ -28,14 +28,14 @@ Verify the installation:
 uv --version
 ```
 
-### 2.-Clone the repository
+### 2. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/your-repository.git
 cd your-repository
 ```
 
-### 3.-Install dependencies
+### 3. Install dependencies
 #### Development
 ```bash
 uv sync
@@ -44,7 +44,7 @@ uv sync
 ```bash
 uv sync --no-dev
 ```
-### 4.-Activate the virtual environment
+### 4. Activate the virtual environment
 
 #### Windows (PowerShell)
 
@@ -63,21 +63,35 @@ uv sync --no-dev
 ```bash
 source .venv/bin/activate
 ```
-### Run Notebooks
+### Launch JupyterLab
 
 ```bash
 jupyter lab
 ```
+
+
+## ✅ Model Performance Comparison
+
+| Algorithm | Implementation | Accuracy | Recall | Precision | F1 Score |
+|---------------|-------:|-------:|-------:|----------:|---------:|
+| Logistic Regression | Manual | 0.7820 | 0.5574 | 0.4720 | 0.5112 |
+| Logistic Regression| Scikit-learn | 0.7815 | 0.5550 | 0.4709 | 0.5095 |
+| K-Nearest Neighbors | Manual | - | - | - | - |
+| K-Nearest Neighbors | Scikit-learn | - | - | - | - |
+| Desicion Tree | Manual | - | - | - | - |
+| Desicion Tree | Scikit-learn | - | - | - | - |
+| Random Forest | Manual | - | - | - | - |
+| Random Forest | Scikit-learn | - | - | - | - |
 ## 🚧 Status
 
 Current phase:
 
 - [x] Project initialization
 - [x] Dataset selected
-- [ ] Exploratory Data Analysis
-- [ ] Data preprocessing
-- [ ] Model training
-- [ ] Model comparison
+- [x] Exploratory Data Analysis
+- [x] Data preprocessing
+- [x] Model training
+- 🚧 Model comparison (In Progress)
 - [ ] FastAPI
 - [ ] PostgreSQL
 - [ ] Docker
