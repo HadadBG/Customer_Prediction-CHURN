@@ -71,16 +71,17 @@ jupyter lab
 
 
 ## ✅ Model Performance Comparison
+The table below compares the performance of the custom machine learning implementations with their Scikit-learn equivalents on the Customer Churn dataset.
 
 | Algorithm | Implementation | Accuracy | Recall | Precision | F1 Score |
 |---------------|-------:|-------:|-------:|----------:|---------:|
-| Logistic Regression | Manual | 0.7820 | 0.5574 | 0.4720 | 0.5112 |
+| Logistic Regression | Custom | 0.7820 | 0.5574 | 0.4720 | 0.5112 |
 | Logistic Regression| Scikit-learn | 0.7815 | 0.5550 | 0.4709 | 0.5095 |
-| K-Nearest Neighbors | Manual | - | - | - | - |
+| K-Nearest Neighbors | Custom | - | - | - | - |
 | K-Nearest Neighbors | Scikit-learn | - | - | - | - |
-| Desicion Tree | Manual | - | - | - | - |
-| Desicion Tree | Scikit-learn | - | - | - | - |
-| Random Forest | Manual | - | - | - | - |
+| Decision Tree | Custom | - | - | - | - |
+| Decision Tree | Scikit-learn | - | - | - | - |
+| Random Forest | Custom | - | - | - | - |
 | Random Forest | Scikit-learn | - | - | - | - |
 ## 🚧 Status
 
@@ -91,7 +92,7 @@ Current phase:
 - [x] Exploratory Data Analysis
 - [x] Data preprocessing
 - [x] Model training
-- 🚧 Model comparison (In Progress)
+- [ ] 🚧 Model comparison (In Progress)
 - [ ] FastAPI
 - [ ] PostgreSQL
 - [ ] Docker
