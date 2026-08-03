@@ -88,13 +88,13 @@ The table below compares the performance of the custom machine learning implemen
 
 | Algorithm | Implementation | Accuracy | Recall | Precision | F1 Score |
 |---------------|-------:|-------:|-------:|----------:|---------:|
-| Logistic Regression | Custom | 0.7820 | 0.5574 | 0.4720 | 0.5112 |
+| Logistic Regression | Own Implementation | 0.7820 | 0.5574 | 0.4720 | 0.5112 |
 | Logistic Regression| Scikit-learn | 0.7815 | 0.5550 | 0.4709 | 0.5095 |
-| K-Nearest Neighbors | Custom | - | - | - | - |
+| K-Nearest Neighbors | Own Implementation | - | - | - | - |
 | K-Nearest Neighbors | Scikit-learn | - | - | - | - |
-| Decision Tree | Custom | - | - | - | - |
+| Decision Tree | Own Implementation | - | - | - | - |
 | Decision Tree | Scikit-learn | - | - | - | - |
-| Random Forest | Custom | - | - | - | - |
+| Random Forest | Own Implementation | - | - | - | - |
 | Random Forest | Scikit-learn | - | - | - | - |
 ## 🚧 Status
 
