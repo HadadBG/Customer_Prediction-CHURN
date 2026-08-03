@@ -31,8 +31,8 @@ uv --version
 ### 2. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
-cd your-repository
+git clone https://github.com/HadadBG/Customer_Prediction-CHURN
+cd Customer_Prediction-CHURN
 ```
 
 ### 3. Install dependencies
@@ -69,6 +69,19 @@ source .venv/bin/activate
 jupyter lab
 ```
 
+## 🛢️ Dataset
+This project uses the **Customer Churn Records** dataset from Kaggle.
+
+The dataset contains customer demographic and banking information used to predict whether a customer will leave the bank (churn).
+
+You can download the dataset from:
+- Kaggle: https://www.kaggle.com/datasets/radheshyamkollipara/bank-customer-churn
+
+After downloading it, place the dataset in:
+
+```
+churn_model/data/Customer-Churn-Records.csv
+```
 
 ## ✅ Model Performance Comparison
 The table below compares the performance of the custom machine learning implementations with their Scikit-learn equivalents on the Customer Churn dataset.
