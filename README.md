@@ -92,8 +92,8 @@ The table below compares the performance of the custom machine learning implemen
 | Logistic Regression| Scikit-learn | 0.7815 | 0.5550 | 0.4709 | 0.5095 |
 | K-Nearest Neighbors | Own Implementation | 0.8335 | 0.3936 | 0.6544 | 0.4916 |
 | K-Nearest Neighbors | Scikit-learn | 0.8335 | 0.3936 | 0.6544 | 0.4916 |
-| Decision Tree | Own Implementation | - | - | - | - |
-| Decision Tree | Scikit-learn | - | - | - | - |
+| Decision Tree | Own Implementation | 0.8625 | 0.5281 | 0.7248 | 0.6110 |
+| Decision Tree | Scikit-learn | 0.8625 | 0.5281 | 0.7248 | 0.6110 |
 | Random Forest | Own Implementation | - | - | - | - |
 | Random Forest | Scikit-learn | - | - | - | - |
 ## 🚧 Status
