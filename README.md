@@ -94,10 +94,12 @@ The table below compares the performance of the custom machine learning implemen
 | K-Nearest Neighbors | Scikit-learn | 0.8335 | 0.3936 | 0.6544 | 0.4916 |
 | Decision Tree | Own Implementation | 0.8625 | 0.5281 | 0.7248 | 0.6110 |
 | Decision Tree | Scikit-learn | 0.8625 | 0.5281 | 0.7248 | 0.6110 |
-| Random Forest | Own Implementation | 0.8740 | 0.4987 | 0.812 | ***0.6181*** |
+| Random Forest | Own Implementation | 0.8740 | 0.4987 | 0.8120 | 0.6181 |
 | Random Forest | Scikit-learn | 0.8655 | 0.4400 | 0.8181 | 0.5723 |
 | Gradient Boosting | Own Implementation | 0.8735 | 0.4889 | 0.8196 | 0.6125 |
 | Gradient Boosting | Scikit-learn | 0.8670 | 0.5061 | 0.7638 | 0.6088 |
+| XGBoost | XGBoost Team | 0.8720 | 0.4865 | 0.8122 | 0.6085 |
+| XGBoost | Own Implementation | 0.8760 | 0.5134 | 0.8108 | *0.6287* |
 ## 🚧 Status
 
 Current phase:
@@ -107,9 +109,9 @@ Current phase:
 - [x] Exploratory Data Analysis
 - [x] Data preprocessing
 - [x] Model training
-- [ ] 🚧 Model comparison (In Progress)
-- [ ] FastAPI
-- [ ] PostgreSQL
+- [x] Model comparison
+- [ ] 🚧 FastAPI (In Progress)
+- [ ] FrontEnd
 - [ ] Docker
 - [ ] CI/CD
 - [ ] Deployment
