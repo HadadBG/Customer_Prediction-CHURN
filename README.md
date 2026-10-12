@@ -99,7 +99,7 @@ The table below compares the performance of the custom machine learning implemen
 | Gradient Boosting | Own Implementation | 0.8735 | 0.4889 | 0.8196 | 0.6125 |
 | Gradient Boosting | Scikit-learn | 0.8670 | 0.5061 | 0.7638 | 0.6088 |
 | XGBoost | XGBoost Team | 0.8720 | 0.4865 | 0.8122 | 0.6085 |
-| XGBoost | Own Implementation | 0.8760 | 0.5134 | 0.8108 | *0.6287* |
+| XGBoost | Own Implementation | 0.8760 | 0.5134 | 0.8108 | ***0.6287*** |
 ## 🚧 Status
 
 Current phase:
