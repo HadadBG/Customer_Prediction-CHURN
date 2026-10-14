@@ -105,7 +105,9 @@ The table below compares the performance of the custom machine learning implemen
 
 Train the churn prediction model using the default dataset:
 
+```
 uv run train
+```
 
 By default, the training script uses /data/Customer-Churn-Records.csv.
 
@@ -113,7 +115,9 @@ Custom Dataset
 
 To train the model using a different dataset, specify its path with the --data argument:
 
+```
 uv run train --data "./data/Customer-Churn-Records.csv"
+```
 
 The --data argument accepts a custom path to the CSV file you want to use for training.
 
@@ -125,7 +129,9 @@ This project uses FastAPI and Uvicorn to expose the churn prediction model throu
 
 From the project root directory, run:
 
+```
 uv run api
+```
 
 This command starts the Uvicorn server using the configuration defined in api/__main__.py.
 
