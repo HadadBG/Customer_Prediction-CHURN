@@ -33,7 +33,7 @@ def predict(customer: dict[str, Any]) -> dict[str, Any]:
             detail=str(exc),
         ) from exc
 
-    return jsonable_encoder({"prediction": result})
+    return jsonable_encoder(result)
 
 @app.post("/predict_file")
 async def predict_file(file: UploadFile = File(...)):

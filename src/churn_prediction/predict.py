@@ -5,7 +5,7 @@ import joblib
 import pandas as pd
 
 ARTIFACTS_PATH="artifacts/churn_model.joblib"
-
+THRESHOLD = 0.38
 from .preprocessing import validate_test_data,clean_data
 order_dict = {
 
@@ -46,15 +46,17 @@ def predict_from_data_frame(df_ori, output_path=None):
     X=ct.transform(X)
     
     prediction=model.predict(X)
+    prediction_binary = (prediction >= THRESHOLD).astype(int)
+    df_ori=df_ori.assign(score=prediction,prediction=prediction_binary)
+
     
-    df_ori=df_ori.assign(prediction=prediction)
     if y is not None:
-        results= map(__get_if_correct__,zip(prediction,y))
+        results= map(__get_if_correct__,zip(prediction_binary,y))
         df_ori =df_ori.assign(correct_prediction=list(results))
     if output_path is None:
-        return df_ori["prediction"][0]
+        return df_ori["score"][0]
     else:
-        df_ori.to_csv(output_path, index=False)
+        df_ori.to_csv(output_path, index=False,float_format='%.2f')
 
 def predict_from_file(file_path,output_path):
     
@@ -72,18 +74,18 @@ def predict_from_python_obj(data):
     if col in data.keys()
     ]
     )
-    resultado=predict_from_data_frame(data_frame)
-   
-    return bool(resultado == 1)
+    resultado=float(predict_from_data_frame(data_frame))
+    
+    return {"score":resultado,"prediction":resultado>=THRESHOLD}
     
 if __name__=="__main__":
     print("Predicting...")
-    #predict_from_file("data/Customer-Churn-Example.csv","results/output.csv")
+    predict_from_file("data/Customer-Churn-Example.csv","results/output.csv")
     #12    
     object_aux= {
 
     "CreditScore": 688,
-    "Geograpy": "Germany",
+    "Geography": "Germany",
     "Gender": "Male",
     "Age": 35,
     "Tenure": 5,
@@ -96,7 +98,7 @@ if __name__=="__main__":
     "Card Type": "PLATINUM",
     "Point Earned": 384
     }
-    predict_from_python_obj(object_aux)
+    print(predict_from_python_obj(object_aux))
     
     
 

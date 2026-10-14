@@ -277,7 +277,7 @@ class XGBoostModel():
     lambda_param: float = 1.0,
     gamma_param: float = 0.0,
     min_child_weight: float = 1.0,
-    threshold:float =0.5
+    
     ):
         self.depth_trees = depth_trees
         self.learning_rate = learning_rate
@@ -285,7 +285,7 @@ class XGBoostModel():
         self.lambda_param = lambda_param
         self.gamma_param = gamma_param
         self.min_child_weight = min_child_weight
-        self.threshold=threshold
+       
         
     def fit(self,X_train,y_train):
         self.DecisionTrees=[]
@@ -320,5 +320,6 @@ class XGBoostModel():
         for arbol in self.DecisionTrees:
             res+=self.learning_rate*tree_walk(arbol,X_test)
         probabilities=__sigmoid__(res)
-        return (probabilities >= self.threshold).astype(int) ###predictions
+        return probabilities
+        #return (probabilities >= self.threshold).astype(int) ###predictions
         

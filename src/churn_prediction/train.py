@@ -48,9 +48,6 @@ def main():
         lambda_param=0.1,
         gamma_param=0.1,
         min_child_weight=3,
-
-        #threshold=0.5
-        threshold=0.38
         ) 
 
 
@@ -58,8 +55,10 @@ def main():
 
     print("Model Trained Succesfull")
     prediction= model.predict(X_test)
-
-    print(f"f1_score:{f1_score(y_test,prediction)}")
+    default_threshold=0.38
+    #default_threshold=0.5
+    prediction_binary = (prediction >= default_threshold).astype(int)
+    print(f"f1_score:{f1_score(y_test,prediction_binary)}")
 
 
     artifact = {
