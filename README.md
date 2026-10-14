@@ -125,8 +125,6 @@ The --data argument accepts a custom path to the CSV file you want to use for tr
 
 This project uses FastAPI and Uvicorn to expose the churn prediction model through a REST API.
 
-1. Start the API
-
 From the project root directory, run:
 
 ```
@@ -136,8 +134,6 @@ uv run api
 This command starts the Uvicorn server using the configuration defined in api/__main__.py.
 
 By default, the API listens on port 8000.
-
-2. Access the API
 
 Once the server is running, you can access the following endpoints:
 

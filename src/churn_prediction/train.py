@@ -13,13 +13,13 @@ from pathlib import Path
 import joblib
 
 def main():
+    
     parser = argparse.ArgumentParser(
             description="Train the churn prediction model"
         )
 
     parser.add_argument(
         "--data",
-        required=True,
         default="./data/Customer-Churn-Records.csv" ,
         help="Path to the training dataset",
     )

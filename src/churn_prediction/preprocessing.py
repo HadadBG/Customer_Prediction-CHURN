@@ -20,9 +20,7 @@ target_name="Exited"
 def validate_test_data(df):
     if df.empty:
         raise ValueError("The dataset is empty.")
-    print(df.columns)
     missing_columns = columns_names - set(df.columns)
-    print(missing_columns)
     if missing_columns:
         raise KeyError(f"Columns Missing:{str(missing_columns)}")
     
