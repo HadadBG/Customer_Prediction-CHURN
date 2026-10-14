@@ -100,6 +100,49 @@ The table below compares the performance of the custom machine learning implemen
 | Gradient Boosting | Scikit-learn | 0.8670 | 0.5061 | 0.7638 | 0.6088 |
 | XGBoost | XGBoost Team | 0.8720 | 0.4865 | 0.8122 | 0.6085 |
 | XGBoost | Own Implementation | 0.8760 | 0.5134 | 0.8108 | ***0.6287*** |
+
+## 💪 Model Training
+
+Train the churn prediction model using the default dataset:
+
+uv run train
+
+By default, the training script uses /data/Customer-Churn-Records.csv.
+
+Custom Dataset
+
+To train the model using a different dataset, specify its path with the --data argument:
+
+uv run train --data "./data/Customer-Churn-Records.csv"
+
+The --data argument accepts a custom path to the CSV file you want to use for training.
+
+## 🚀 Running the API
+
+This project uses FastAPI and Uvicorn to expose the churn prediction model through a REST API.
+
+1. Start the API
+
+From the project root directory, run:
+
+uv run api
+
+This command starts the Uvicorn server using the configuration defined in api/__main__.py.
+
+By default, the API listens on port 8000.
+
+2. Access the API
+
+Once the server is running, you can access the following endpoints:
+
+API documentation (Swagger UI): http://127.0.0.1:8000/docs
+
+Alternative API documentation (ReDoc): http://127.0.0.1:8000/redoc
+
+API root: http://127.0.0.1:8000/
+
+Note: Make sure the trained model and preprocessing artifacts are available in the expected locations before starting the API, by default the repository includes a pretrained object.
+
 ## 🚧 Status
 
 Current phase:
@@ -110,8 +153,8 @@ Current phase:
 - [x] Data preprocessing
 - [x] Model training
 - [x] Model comparison
-- [ ] 🚧 FastAPI (In Progress)
-- [ ] FrontEnd
+- [x] FastAPI
+- [ ] 🚧 FrontEnd (In Progress)
 - [ ] Docker
 - [ ] CI/CD
 - [ ] Deployment

@@ -74,3 +74,4 @@ models/*.pkl
 # Datos temporales
 # =========================
 *.log
+*.egg-info/

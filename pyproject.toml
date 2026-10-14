@@ -1,3 +1,9 @@
+[project.scripts]
+api = "api.api:main"
+train = "churn_prediction.train:main"
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
 [project]
 name = "Customer_Prediction"
 version = "0.1.0"
@@ -5,13 +11,18 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "fastapi>=0.143.1",
     "matplotlib>=3.11.1",
     "numpy>=2.5.1",
     "pandas>=3.0.5",
+    "python-multipart>=0.0.32",
     "scikit-learn>=1.9.0",
+    "uvicorn>=0.54.0",
 ]
 
 [dependency-groups]
 dev = [
     "jupyterlab>=4.6.2",
 ]
+[tool.setuptools.packages.find]
+where = ["src"]

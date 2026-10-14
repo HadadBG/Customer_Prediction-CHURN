@@ -6,7 +6,7 @@ import pandas as pd
 
 ARTIFACTS_PATH="artifacts/churn_model.joblib"
 
-from preprocessing import validate_test_data,clean_data
+from .preprocessing import validate_test_data,clean_data
 order_dict = {
 
     "CreditScore": 0,
@@ -64,21 +64,26 @@ def predict_from_file(file_path,output_path):
 
 
 def predict_from_python_obj(data):
+       
     data_frame = pd.DataFrame(
     [data],
-    columns=list(order_dict.keys())
+    columns=[
+    col for col in order_dict.keys()
+    if col in data.keys()
+    ]
     )
-    print(predict_from_data_frame(data_frame))
-    
+    resultado=predict_from_data_frame(data_frame)
+   
+    return bool(resultado == 1)
     
 if __name__=="__main__":
     print("Predicting...")
-    predict_from_file("data/Customer-Churn-Example.csv","results/output.csv")
+    #predict_from_file("data/Customer-Churn-Example.csv","results/output.csv")
     #12    
     object_aux= {
 
     "CreditScore": 688,
-    "Geography": "Germany",
+    "Geograpy": "Germany",
     "Gender": "Male",
     "Age": 35,
     "Tenure": 5,

@@ -1,6 +1,6 @@
 from sklearn.preprocessing import RobustScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
-from pandas import DataFrame
+
 columns_names={
 "CreditScore",
 "Geography",
@@ -20,9 +20,11 @@ target_name="Exited"
 def validate_test_data(df):
     if df.empty:
         raise ValueError("The dataset is empty.")
+    print(df.columns)
     missing_columns = columns_names - set(df.columns)
+    print(missing_columns)
     if missing_columns:
-        raise Exception(f"Columns Missing:{str(missing_columns)}")
+        raise KeyError(f"Columns Missing:{str(missing_columns)}")
     
 
 def validate_training_data(df):
