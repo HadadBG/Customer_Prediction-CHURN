@@ -8,6 +8,7 @@ from fastapi import FastAPI, UploadFile, File
 from churn_prediction import predict_from_python_obj,predict_from_file
 from io import StringIO
 from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 app = FastAPI(
@@ -15,7 +16,15 @@ app = FastAPI(
     description="API for predicting customer churn",
     version="0.1.0",
 )
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def health() -> dict[str, str]:
