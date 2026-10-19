@@ -156,8 +156,8 @@ Current phase:
 - [x] Model training
 - [x] Model comparison
 - [x] FastAPI
-- [ ] 🚧 FrontEnd (In Progress)
-- [ ] Docker
+- [x] FrontEnd
+- [x] Docker (In Progress)
 - [ ] CI/CD
 - [ ] Deployment
 
