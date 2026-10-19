@@ -439,7 +439,7 @@
 }
 
 .drop-zone {
-  margin-top: 20px;
+ 
   padding: 15px;
   display: flex;
   align-items: center;
@@ -845,4 +845,38 @@ button:disabled {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+
+.sample-download {
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 1rem 0 1rem;
+
+  color: #169b91;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.sample-download svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.sample-download:hover {
+  color: #117a72;
+  text-decoration: underline;
+}
+
+.sample-download:focus-visible {
+  outline: 2px solid #169b91;
+  outline-offset: 4px;
+  border-radius: 3px;
 }

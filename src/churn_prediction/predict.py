@@ -98,6 +98,7 @@ if __name__=="__main__":
     "Card Type": "PLATINUM",
     "Point Earned": 384
     }
+    print(object_aux.keys())
     print(predict_from_python_obj(object_aux))
     
     

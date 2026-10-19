@@ -1,13 +1,14 @@
 
 import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import "./App.css";
+import CustomerQuiz from "./CustomerQuiz";
 
 type Screen = "home" | "quiz";
 
 function App() {
   const [screen, setScreen] = useState<Screen>("home");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [fileError, setFileError] = useState("");
+const [fileError, setFileError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -25,53 +26,76 @@ function App() {
     setSelectedFile(file);
     setFileError("");
   };
-  const handleProcessCsv = async (file: File) => {
-    setIsProcessing(true);
-    try {
-        // 1. Preparar el archivo
-        const formData = new FormData();
-        formData.append("file", file);
+const handleProcessCsv = async (file: File) => {
+  setFileError(null);
+  setIsProcessing(true);
 
-        // 2. Enviar el CSV a la API
-        const response = await fetch(
-            "http://localhost:8000/predict_file",
-            {
-                method: "POST",
-                body: formData,
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch(
+      "http://localhost:8000/predict_file",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    // Handle errors returned by FastAPI
+    if (!response.ok) {
+      const errorData = (await response
+        .json()
+        .catch(() => null)) as { detail?: unknown } | null;
+
+      let message = `Unable to process the CSV (HTTP ${response.status}).`;
+
+      if (typeof errorData?.detail === "string") {
+        message = errorData.detail;
+      } else if (Array.isArray(errorData?.detail)) {
+        message = errorData.detail
+          .map((item: unknown) => {
+            if (
+              typeof item === "object" &&
+              item !== null &&
+              "msg" in item &&
+              typeof item.msg === "string"
+            ) {
+              return item.msg;
             }
-        );
 
-        // 3. Validar la respuesta
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }
+            return "";
+          })
+          .filter(Boolean)
+          .join(". ") || message;
+      }
 
-        // 4. Obtener las predicciones
-        // 1. Obtener el archivo de la respuesta
-        const blob = await response.blob();
-
-        // 2. Crear una URL temporal para el archivo
-        const downloadUrl = URL.createObjectURL(blob);
-
-        // 3. Crear un enlace y descargar el archivo
-        const link = document.createElement("a");
-        link.href = downloadUrl;
-        link.download = `${file.name.replace(/\.csv$/i, "")}_predictions.csv`;
-
-        document.body.appendChild(link);
-        link.click();
-
-        // 4. Limpiar los recursos utilizados
-        link.remove();
-        URL.revokeObjectURL(downloadUrl);
-
-    } catch (error) {
-        console.error("Error processing CSV:", error);
+      throw new Error(message);
     }
-    finally{
-      setIsProcessing(false);
-    }
-  };
+
+    // Only download the response when the request succeeds
+    const blob = await response.blob();
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = downloadUrl;
+    link.download = `${file.name.replace(/\.csv$/i, "")}-predictions.csv`;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    window.URL.revokeObjectURL(downloadUrl);
+  } catch (error: unknown) {
+    setFileError(
+      error instanceof Error
+        ? error.message
+        : "An unexpected error occurred while processing the CSV."
+    );
+  } finally {
+    setIsProcessing(false);
+  }
+};
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     handleFile(event.currentTarget.files?.[0]);
     event.currentTarget.value = "";
@@ -299,10 +323,31 @@ function App() {
                 <div className="card-content">
                   <h3>Analyze a customer list</h3>
                   <p>
-                    Upload a CSV dataset to generate churn predictions
-                    for multiple customers in a single operation.
-                  </p>
+  Upload a CSV dataset to generate churn predictions
+  for multiple customers in a single operation.
+</p>
 
+<a
+  className="sample-download"
+  href={`${import.meta.env.BASE_URL}Example.csv`}
+  download="sample-churn.csv"
+>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M12 3V15M7 10L12 15L17 10M5 17V20H19V17"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+
+  Download sample CSV
+</a>
                   <div
                     className={`drop-zone ${isDragging ? "is-dragging" : ""}`}
                     onDragOver={(event) => {
@@ -488,63 +533,7 @@ function App() {
             Back to workspace
           </button>
 
-          <section className="quiz-placeholder">
-            <span className="placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle
-                  cx="12"
-                  cy="8"
-                  r="4"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                />
-                <path
-                  d="M4 21V19C4 15.7 7.6 13 12 13C16.4 13 20 15.7 20 19V21"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-
-            <p className="section-eyebrow">
-              SINGLE CUSTOMER ASSESSMENT
-            </p>
-
-            <div className="quiz-progress-label">
-              <span>STEP 1 OF 3</span>
-              <span>Getting started</span>
-            </div>
-
-            <div className="quiz-progress">
-              <span />
-            </div>
-
-            <h1>Let's get to know your customer.</h1>
-
-            <p>
-              Next, we'll build your guided questionnaire using the exact
-              features expected by your trained model and connect it to
-              your FastAPI backend.
-            </p>
-
-            <button
-              className="primary-action placeholder-button"
-              type="button"
-              onClick={() => setScreen("home")}
-            >
-              Return to overview
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M5 12H19M12 5L19 12L12 19"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </section>
+         <CustomerQuiz/>
         </main>
       )}
     </div>
