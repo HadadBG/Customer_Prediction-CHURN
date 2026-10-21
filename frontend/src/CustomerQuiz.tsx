@@ -42,7 +42,7 @@ type PredictionResult = {
   message: string;
 };
 
-const PREDICT_URL = "http://localhost:8000/predict";
+const PREDICT_URL = "/api/predict";
 
 const initialForm: QuizForm = {
   CreditScore: "",

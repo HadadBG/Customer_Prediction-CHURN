@@ -1,0 +1,13 @@
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.git/
+frontend/
+data/
+notebooks/
+results/
+importtime.log
+prueba.py
+src/*.egg-info/

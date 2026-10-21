@@ -1,3 +1,110 @@
+## Running with Docker Compose
+
+The project can be deployed locally using Docker Compose. The application runs in two separate containers: a FastAPI backend for customer churn predictions and a React frontend served by Nginx.
+
+### Architecture
+
+- **Frontend:** React + Vite, built for production and served by Nginx.
+- **Backend:** Python + FastAPI, responsible for loading the trained model and generating predictions.
+- **Model artifact:** `artifacts/churn_model.joblib`.
+- **Networking:** Nginx serves the frontend on port `8080` and forwards API requests to the backend through Docker's internal network.
+
+```text
+Browser
+   |
+   | http://localhost:8080
+   v
+Frontend (Nginx)
+   |
+   | /api/*
+   v
+Backend (FastAPI, port 8000)
+   |
+   v
+Trained churn model
+```
+
+### Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) with the Linux container engine enabled.
+- Docker Compose v2.
+- Internet access to download the required base images and dependencies during the initial build.
+
+### Start the application
+
+From the project root, run:
+
+```bash
+docker compose up --build -d
+```
+
+This command builds the frontend and backend images, creates the required network, and starts both services in the background.
+
+Check the container status:
+
+```bash
+docker compose ps
+```
+
+### Access the application
+
+Once the containers are running, use the following URLs:
+
+| Resource | URL |
+|---|---|
+| Web application | http://localhost:8080 |
+| FastAPI Swagger documentation | http://localhost:8080/api/docs |
+
+The backend is not published directly to the host by default. API requests from the frontend are routed through Nginx using the `/api/` prefix.
+
+### Useful Docker Compose commands
+
+**View logs:**
+
+```bash
+docker compose logs -f
+```
+
+View logs for a specific service:
+
+```bash
+docker compose logs -f backend
+docker compose logs -f frontend
+```
+
+**Stop the application:**
+
+```bash
+docker compose stop
+```
+
+**Restart stopped containers:**
+
+```bash
+docker compose start
+```
+
+**Rebuild after changing the source code or model:**
+
+```bash
+docker compose up --build -d
+```
+
+**Stop and remove the containers:**
+
+```bash
+docker compose down
+```
+
+This command removes the containers and the Compose network but keeps the locally built images.
+
+### Troubleshooting
+
+- **Image download or build errors:** Ensure Docker Desktop is running and can access the container registries. Corporate networks may require configuring a proxy in Docker Desktop.
+- **Frontend unavailable:** Check the container status and frontend logs using `docker compose ps` and `docker compose logs frontend`.
+- **Backend errors:** Inspect `docker compose logs backend` and verify that `artifacts/churn_model.joblib` is available when building the image.
+- **CSV upload errors:** The Nginx configuration limits request bodies to 20 MB.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -157,7 +264,7 @@ Current phase:
 - [x] Model comparison
 - [x] FastAPI
 - [x] FrontEnd
-- [x] Docker (In Progress)
-- [ ] CI/CD
+- [x] Docker
+- [ ] 🚧 CI/CD (In Progress)
 - [ ] Deployment
 

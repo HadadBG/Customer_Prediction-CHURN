@@ -35,7 +35,7 @@ const handleProcessCsv = async (file: File) => {
     formData.append("file", file);
 
     const response = await fetch(
-      "http://localhost:8000/predict_file",
+      "api/predict_file",
       {
         method: "POST",
         body: formData,
