@@ -105,7 +105,7 @@ This command removes the containers and the Compose network but keeps the locall
 - **Backend errors:** Inspect `docker compose logs backend` and verify that `artifacts/churn_model.joblib` is available when building the image.
 - **CSV upload errors:** The Nginx configuration limits request bodies to 20 MB.
 
-## 🚀 Getting Started
+## Running without Docker
 
 ### Prerequisites
 
@@ -203,10 +203,10 @@ The table below compares the performance of the custom machine learning implemen
 | Decision Tree | Scikit-learn | 0.8625 | 0.5281 | 0.7248 | 0.6110 |
 | Random Forest | Own Implementation | 0.8740 | 0.4987 | 0.8120 | 0.6181 |
 | Random Forest | Scikit-learn | 0.8655 | 0.4400 | 0.8181 | 0.5723 |
-| Gradient Boosting | Own Implementation | 0.8735 | 0.4889 | 0.8196 | 0.6125 |
-| Gradient Boosting | Scikit-learn | 0.8670 | 0.5061 | 0.7638 | 0.6088 |
-| XGBoost | XGBoost Team | 0.8720 | 0.4865 | 0.8122 | 0.6085 |
-| XGBoost | Own Implementation | 0.8760 | 0.5134 | 0.8108 | ***0.6287*** |
+| Gradient Boosting | Own Implementation | 0.8755 | 0.5207 | 0.8007 | 0.6311 |
+| Gradient Boosting | Scikit-learn | 0.8685 | 0.4914 | 0.7815 | 0.6045 |
+| XGBoost | XGBoost Team | 0.8785 | 0.5305 | 0.8097 | 0.6410 |
+| XGBoost | Own Implementation | 0.8785 | 0.5305 | 0.8097 | ***0.6410*** |
 
 ## 💪 Model Training
 

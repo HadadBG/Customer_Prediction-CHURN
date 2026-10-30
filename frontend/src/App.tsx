@@ -140,7 +140,7 @@ const handleProcessCsv = async (file: File) => {
             </svg>
           </span>
           <span className="brand-name">
-            Prediction<span>Churn</span>
+            Churn<span>Prediction</span>
           </span>
         </button>
 

@@ -3,7 +3,6 @@ from typing import Any
 
 from fastapi import FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
-import pandas as pd
 from fastapi import FastAPI, UploadFile, File
 from churn_prediction import predict_from_python_obj,predict_from_file
 from io import StringIO

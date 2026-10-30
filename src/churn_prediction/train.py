@@ -42,12 +42,14 @@ def main():
     y_train=y_train.reset_index(drop=True).to_numpy()
 
     model = XGBoostModel(
-        depth_trees=7,
-        n_trees=43,
-        learning_rate=0.08,
-        lambda_param=0.1,
-        gamma_param=0.1,
-        min_child_weight=3,
+        depth_trees=5,
+        n_trees=70,
+        learning_rate=0.16,
+        lambda_param=10,
+        gamma_param=0,
+        min_child_weight=1,
+
+    
         ) 
 
 
@@ -55,8 +57,9 @@ def main():
 
     print("Model Trained Succesfull")
     prediction= model.predict(X_test)
-    default_threshold=0.38
+    default_threshold=0.41
     #default_threshold=0.5
+    
     prediction_binary = (prediction >= default_threshold).astype(int)
     print(f"f1_score:{f1_score(y_test,prediction_binary)}")
 

@@ -18,11 +18,13 @@ dependencies = [
     "python-multipart>=0.0.32",
     "scikit-learn>=1.9.0",
     "uvicorn>=0.54.0",
+    "xgboost>=3.4.1",
 ]
 
 [dependency-groups]
 dev = [
     "jupyterlab>=4.6.2",
+    "pytest>=9.1.1",
 ]
 [tool.setuptools.packages.find]
 where = ["src"]

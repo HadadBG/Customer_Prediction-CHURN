@@ -6,7 +6,7 @@ import math
 def __sigmoid__(arr:np.ndarray):
     return 1 / (1 + np.exp(-arr))
 def __log_odds__(p:float):
-    return math.log(1/1-p)
+    return math.log(p/(1-p))
 
 @dataclass
 class __Desicion__:
