@@ -5,7 +5,7 @@ import joblib
 import pandas as pd
 
 ARTIFACTS_PATH="artifacts/churn_model.joblib"
-THRESHOLD = 0.38
+THRESHOLD = 0.41
 from .preprocessing import validate_test_data,clean_data
 order_dict = {
 
@@ -78,7 +78,7 @@ def predict_from_python_obj(data):
     
     return {"score":resultado,"prediction":resultado>=THRESHOLD}
     
-if __name__=="__main__":
+if __name__=="__main__": # pragma: no cover
     print("Predicting...")
     predict_from_file("data/Customer-Churn-Example.csv","results/output.csv")
     #12    

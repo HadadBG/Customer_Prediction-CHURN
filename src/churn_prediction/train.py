@@ -76,5 +76,5 @@ def main():
 
     print(f"Model saved at: {output_path}")
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     main()

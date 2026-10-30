@@ -23,8 +23,10 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.16.0",
     "jupyterlab>=4.6.2",
     "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
 ]
 [tool.setuptools.packages.find]
 where = ["src"]
