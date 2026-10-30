@@ -107,23 +107,40 @@ This command removes the containers and the Compose network but keeps the locall
 
 ## Running without Docker
 
+This project can also be executed locally without Docker. The backend and frontend run independently, so both environments must be configured.
+
 ### Prerequisites
 
-Before running this project, make sure you have the following installed:
+Make sure you have the following installed:
 
-- Python **3.14+**
-- Git
-- uv (Python package manager)
+| Tool | Version | Purpose |
+|---|---|---|
+| Python | 3.14+ | Backend |
+| uv | Latest | Python package manager |
+| Node.js | 24+ | Frontend |
+| npm | Included with Node.js | Frontend dependencies |
+| Git | Latest | Repository management |
 
-### 1. Install uv
+---
 
-#### Windows (PowerShell)
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/HadadBG/Customer_Prediction-CHURN
+cd Customer_Prediction-CHURN
+```
+
+### 2. Backend Setup (Python)
+
+#### Install uv
+
+**Windows (PowerShell)**
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-#### macOS / Linux
+**macOS / Linux**
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -135,46 +152,279 @@ Verify the installation:
 uv --version
 ```
 
-### 2. Clone the repository
+#### Install dependencies
+
+**Development**
+
+Installs all dependencies, including development tools and testing libraries.
+
+```bash
+uv sync
+```
+
+**Production**
+
+Installs only the dependencies required to run the application.
+
+```bash
+uv sync --no-dev
+```
+
+#### Launch the API
+
+From the project root:
+
+```bash
+uv run api
+```
+
+The API will be available at:
+
+```text
+http://localhost:8000
+```
+
+API documentation (Swagger UI):
+
+```text
+http://localhost:8000/docs
+```
+
+#### (Optional) Launch JupyterLab
+
+If development dependencies are installed:
+
+```bash
+uv run jupyter lab
+```
+
+---
+
+### 3. Frontend Setup (React + Vite)
+
+Make sure Node.js and npm are installed.
+
+Verify the installation:
+
+```bash
+node --version
+npm --version
+```
+
+Navigate to the frontend directory:
+
+```bash
+cd frontend
+```
+
+#### Install dependencies
+
+```bash
+npm ci
+```
+
+#### Run in development mode
+
+```bash
+npm run dev
+```
+
+Vite will start the development server. By default, it is available at:
+
+```text
+http://localhost:5173
+```
+
+#### Build for production
+
+To generate the optimized production files:
+
+```bash
+npm run build
+```
+
+The resulting files will be generated in the `dist/` directory.
+
+To locally preview the production build:
+
+```bash
+npm run preview
+```
+
+---
+
+### 4. Application Configuration
+
+Make sure the frontend API endpoint points to the backend instance:
+
+```text
+http://localhost:8000/predict
+```
+
+Both services must be running for the application to work correctly.
+
+- Backend: `http://localhost:8000`
+- Frontend: `http://localhost:5173`
+## Running without Docker
+
+This project can also be executed locally without Docker. The backend and frontend run independently, so both environments must be configured.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+| Tool | Version | Purpose |
+|---|---|---|
+| Python | 3.14+ | Backend |
+| uv | Latest | Python package manager |
+| Node.js | 24+ | Frontend |
+| npm | Included with Node.js | Frontend dependencies |
+| Git | Latest | Repository management |
+
+---
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/HadadBG/Customer_Prediction-CHURN
 cd Customer_Prediction-CHURN
 ```
 
-### 3. Install dependencies
-#### Development
+### 2. Backend Setup (Python)
+
+#### Install uv
+
+**Windows (PowerShell)**
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+**macOS / Linux**
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Verify the installation:
+
+```bash
+uv --version
+```
+
+#### Install dependencies
+
+**Development**
+
+Installs all dependencies, including development tools and testing libraries.
+
 ```bash
 uv sync
 ```
-#### Production
+
+**Production**
+
+Installs only the dependencies required to run the application.
+
 ```bash
 uv sync --no-dev
 ```
-### 4. Activate the virtual environment
 
-#### Windows (PowerShell)
+#### Launch the API
 
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-#### Windows (Command Prompt)
-
-```cmd
-.venv\Scripts\activate.bat
-```
-
-#### Linux / macOS
+From the project root:
 
 ```bash
-source .venv/bin/activate
+uv run api
 ```
-### Launch JupyterLab
+
+The API will be available at:
+
+```text
+http://localhost:8000
+```
+
+API documentation (Swagger UI):
+
+```text
+http://localhost:8000/docs
+```
+
+#### (Optional) Launch JupyterLab
+
+If development dependencies are installed:
 
 ```bash
-jupyter lab
+uv run jupyter lab
 ```
+
+---
+
+### 3. Frontend Setup (React + Vite)
+
+Make sure Node.js and npm are installed.
+
+Verify the installation:
+
+```bash
+node --version
+npm --version
+```
+
+Navigate to the frontend directory:
+
+```bash
+cd frontend
+```
+
+#### Install dependencies
+
+```bash
+npm ci
+```
+
+#### Run in development mode
+
+```bash
+npm run dev
+```
+
+Vite will start the development server. By default, it is available at:
+
+```text
+http://localhost:5173
+```
+
+#### Build for production
+
+To generate the optimized production files:
+
+```bash
+npm run build
+```
+
+The resulting files will be generated in the `dist/` directory.
+
+To locally preview the production build:
+
+```bash
+npm run preview
+```
+
+---
+
+### 4. Application Configuration
+
+Make sure the frontend API endpoint points to the backend instance:
+
+```text
+http://localhost:8000/predict
+```
+
+Both services must be running for the application to work correctly.
+
+- Backend: `http://localhost:8000`
+- Frontend: `http://localhost:5173`
 
 ## 🛢️ Dataset
 This project uses the **Customer Churn Records** dataset from Kaggle.
@@ -228,29 +478,7 @@ uv run train --data "./data/Customer-Churn-Records.csv"
 
 The --data argument accepts a custom path to the CSV file you want to use for training.
 
-## 🚀 Running the API
 
-This project uses FastAPI and Uvicorn to expose the churn prediction model through a REST API.
-
-From the project root directory, run:
-
-```
-uv run api
-```
-
-This command starts the Uvicorn server using the configuration defined in api/__main__.py.
-
-By default, the API listens on port 8000.
-
-Once the server is running, you can access the following endpoints:
-
-API documentation (Swagger UI): http://127.0.0.1:8000/docs
-
-Alternative API documentation (ReDoc): http://127.0.0.1:8000/redoc
-
-API root: http://127.0.0.1:8000/
-
-Note: Make sure the trained model and preprocessing artifacts are available in the expected locations before starting the API, by default the repository includes a pretrained object.
 
 ## 🚧 Status
 
@@ -265,6 +493,8 @@ Current phase:
 - [x] FastAPI
 - [x] FrontEnd
 - [x] Docker
-- [ ] 🚧 CI/CD (In Progress)
+- [x] Test BackEnd
+- [ ] 🚧 Test FrontEnd (In Progress)
+- [ ] CI/CD
+- [ ] Explainable Artificial Intelligence (SHAP)
 - [ ] Deployment
-
