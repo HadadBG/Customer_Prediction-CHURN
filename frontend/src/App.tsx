@@ -1,5 +1,6 @@
 
 import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
+import { BASE_URL } from "./vite-env";
 import "./App.css";
 import CustomerQuiz from "./CustomerQuiz";
 
@@ -329,7 +330,7 @@ const handleProcessCsv = async (file: File) => {
 
 <a
   className="sample-download"
-  href={`${import.meta.env.BASE_URL}Example.csv`}
+  href={`${BASE_URL}Example.csv`}
   download="sample-churn.csv"
 >
   <svg
