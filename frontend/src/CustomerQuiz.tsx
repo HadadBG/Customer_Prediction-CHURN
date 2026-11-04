@@ -97,7 +97,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function normalizePrediction(payload: unknown): PredictionResult {
   const root = isRecord(payload) ? payload : {};
-  console.log(root)
+
   
  
 
@@ -188,7 +188,7 @@ function CustomerQuiz() {
     event.preventDefault();
     setSubmitError("");
     setPrediction(null);
-    console.log("dubmit handled")
+   
     if (!validateFields(allFields)) {
       const firstInvalidStep = Object.entries(stepFields).find(([, fields]) =>
         fields.some((field) => {

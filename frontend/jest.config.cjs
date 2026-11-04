@@ -15,6 +15,8 @@ module.exports = {
         '**/?(*.)+(spec|test).[tj]s?(x)'
     ],
     moduleNameMapper: {
+          "^\\./vite-env$": "<rootDir>/test/mocks/vite-env.ts",
   "\\.(css|less|scss|sass)$": "<rootDir>/test/styleMock.js",
+  
 },
 }
