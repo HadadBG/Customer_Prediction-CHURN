@@ -335,7 +335,7 @@ Current phase:
 - [x] FrontEnd
 - [x] Docker
 - [x] Test BackEnd
-- [ ] 🚧 Test FrontEnd (In Progress)
-- [ ] CI/CD
+- [x] Test FrontEnd
+- [ ] 🚧 CI/CD (In Progress)
 - [ ] Explainable Artificial Intelligence (SHAP)
 - [ ] Deployment
